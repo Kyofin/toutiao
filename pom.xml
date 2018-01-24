@@ -92,6 +92,25 @@
 	</dependencies>
 	
 	<build>
+		<!--保证二进制文件不被破坏-->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>static/fonts/**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>static/fonts/**</include>
+				</includes>
+			</resource>
+		</resources>
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -99,6 +118,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 	
 
 </project>

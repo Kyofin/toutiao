@@ -28,6 +28,7 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
     @Autowired
     private JedisAdapter jedisAdapter;
 
+    //该bean生成后就设置
     @Override
     public void afterPropertiesSet() throws Exception {
         Map<String, EventHandler> beans = applicationContext.getBeansOfType(EventHandler.class);

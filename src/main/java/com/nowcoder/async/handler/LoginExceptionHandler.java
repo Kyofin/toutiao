@@ -26,7 +26,7 @@ public class LoginExceptionHandler implements EventHandler{
     public void doHandle(EventModel model) {
         Message message = new Message();
         message.setToId(model.getActorId());
-        message.setContent("你上次的登陆IP异常");
+        message.setContent("你上次的登陆IP正常");
         // SYSTEM ACCOUNT
         message.setFromId(3);
         message.setCreatedDate(new Date());
