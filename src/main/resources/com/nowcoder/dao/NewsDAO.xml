@@ -5,7 +5,7 @@
     <sql id="table">news</sql>
     <sql id="selectFields">id,title, link, image, like_count, comment_count,created_date,user_id
     </sql>
-    <select id="selectByUserIdAndOffset" resultType="com.nowcoder.model.News">
+    <select id="selectByUserId" resultType="com.nowcoder.model.News">
         SELECT
         <include refid="selectFields"/>
         FROM
@@ -15,6 +15,6 @@
             WHERE user_id = #{userId}
         </if>
         ORDER BY id DESC
-        LIMIT #{offset},#{limit}
+
     </select>
 </mapper>

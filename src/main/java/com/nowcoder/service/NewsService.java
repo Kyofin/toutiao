@@ -1,5 +1,7 @@
 package com.nowcoder.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nowcoder.dao.NewsDAO;
 import com.nowcoder.model.HostHolder;
 import com.nowcoder.model.News;
@@ -29,19 +31,24 @@ public class NewsService {
         private NewsDAO newsDao;
 
 
-        /**
-         * 获取最新的news
-         * @param userId
-         * @param offset
-         * @param limit
-         * @return
-         */
-        public List<News> getLastestNews(int userId,int offset,int limit)
+
+
+        public PageInfo<News> getNewsByPage(int userId , Integer currentPage )
         {
-                return  newsDao.selectByUserIdAndOffset(userId,offset,limit);
+                List <News> newsList = null;
+                if (currentPage == null)
+                {
+                        PageHelper.startPage(1,10);
+                        newsList =newsDao.selectByUserId(userId);
+                }else
+                {
+                        PageHelper.startPage(currentPage,10);
+                        newsList =newsDao.selectByUserId(userId);
+                }
+                //包装内容
+                PageInfo<News> pageInfo = new PageInfo<>(newsList);
+                return  pageInfo;
         }
-
-
 
         /**
          * 保存图片到服务器

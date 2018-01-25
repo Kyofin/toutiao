@@ -1,28 +1,25 @@
 package com.nowcoder;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nowcoder.dao.LoginTicketDAO;
 import com.nowcoder.dao.MessageDao;
 import com.nowcoder.dao.NewsDAO;
 import com.nowcoder.dao.UserDAO;
-import com.nowcoder.model.LoginTicket;
 import com.nowcoder.model.Message;
 import com.nowcoder.model.News;
 import com.nowcoder.model.User;
+import com.nowcoder.service.NewsService;
 import com.nowcoder.util.ToutiaoUtil;
-import org.apache.commons.lang.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = ToutiaoApplication.class)
@@ -40,6 +37,20 @@ public class Tests {
 	@Autowired
 	private MessageDao messageDao;
 
+
+	@Autowired
+	private  NewsDAO newsDAO;
+
+	@Autowired
+	private NewsService newsService;
+
+
+	@Test
+	public void  pageHelper()
+	{
+		Integer page = null;
+		System.out.println(JSONObject.toJSONString(newsService.getNewsByPage(0,10).getNavigateFirstPage()));
+	}
 
 
 	@Test

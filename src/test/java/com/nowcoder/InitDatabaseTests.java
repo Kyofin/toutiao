@@ -109,7 +109,7 @@ public class InitDatabaseTests {
 
 			messageDao.addMessage(message);
 		}
-		newsDao.selectByUserIdAndOffset(0,0,10);
+		//newsDao.selectByUserIdAndOffset(0,0,10);
 		newsDao.updateCommentCount(1,100);
 
 		//删除id =1的用户

@@ -139,7 +139,27 @@
 
                 </div>
             </div>
-        </div>
+
+        <!-- 分页 -->
+        <nav style="text-align: center">
+            <ul   class="pagination">
+                #if($pageInfo.navigateFirstPage != $pageInfo.pageNum)
+                     <li><a href="?page=$!{pageInfo.prePage}">&laquo;上一页</a></li>
+                #end
+                #foreach($item in $pageInfo.navigatepageNums)
+                    #if($item == $pageInfo.pageNum)
+                        <li class="disabled"><a href="#">$!{pageInfo.pageNum}</a></li>
+                    #else
+                        <li ><a href="?page=${item}">$item </a></li>
+                    #end
+                #end
+                #if($pageInfo.pages != $pageInfo.pageNum)
+                    <li><a href="/?page=$!{pageInfo.nextPage}">&raquo;下一页</a></li>
+                #end
+            </ul>
+        </nav>
+
+    </div>
 
     </div>
 
