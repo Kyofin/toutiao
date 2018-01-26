@@ -18,7 +18,7 @@ public class CommentService {
     public PageInfo<Comment> getComments(int entityId , int entityType , Integer currentPage)
     {
         List <Comment> commentLsit = null;
-        int pageSize = 5;
+        int pageSize = 40;
 
         if (currentPage == null)
         {

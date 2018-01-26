@@ -35,14 +35,15 @@ public class NewsService {
 
         public PageInfo<News> getNewsByPage(int userId , Integer currentPage )
         {
+                int pageSize = 10 ;
                 List <News> newsList = null;
                 if (currentPage == null)
                 {
-                        PageHelper.startPage(1,10);
+                        PageHelper.startPage(1,pageSize);
                         newsList =newsDao.selectByUserId(userId);
                 }else
                 {
-                        PageHelper.startPage(currentPage,10);
+                        PageHelper.startPage(currentPage,pageSize);
                         newsList =newsDao.selectByUserId(userId);
                 }
                 //包装内容
