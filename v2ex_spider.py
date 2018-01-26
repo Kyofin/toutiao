@@ -14,7 +14,7 @@ class Handler(BaseHandler):
     crawl_config = {
     }
 
-    # 构造器
+
     def __init__(self):
         self.db = MySQLdb.connect('127.0.0.1', 'root', '123456', 'toutiao', charset='utf8');
 
