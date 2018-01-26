@@ -49,7 +49,7 @@ public class Tests {
 	public void  pageHelper()
 	{
 		Integer page = null;
-		System.out.println(JSONObject.toJSONString(newsService.getNewsByPage(0,10).getNavigateFirstPage()));
+		System.out.println(JSONObject.toJSONString(newsService.getNewsByPage(0,2).getNavigateLastPage()));
 	}
 
 

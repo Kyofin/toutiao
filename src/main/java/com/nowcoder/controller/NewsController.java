@@ -80,7 +80,7 @@ public class NewsController {
     }
 
     @RequestMapping(path = {"/news/{newsId}"}, method = {RequestMethod.GET})
-    public String newsDetail(@PathVariable("newsId") int newsId, Model model) {
+    public String newsDetail(@PathVariable("newsId") int newsId, @RequestParam(value = "page",required = false) Integer currentPage , Model model) {
         try {
 
            News outNews = newsService.getNewsById(newsId);
@@ -97,9 +97,10 @@ public class NewsController {
 
            //加载该咨询的评论
             List<ViewObject> CommentVOs= new ArrayList<>();
-            if (outNews != null)
+            //只有用户登录了才加载评论
+            if (outNews != null  && hostHolder!=null)
             {
-                List<Comment> commentList  = commentService.getComment(newsId , EntityType.ENTITY_NEW);
+                List<Comment> commentList  = commentService.getComments(newsId , EntityType.ENTITY_NEW ,currentPage).getList();
                 for(Comment comment : commentList)
                 {
                     ViewObject viewObject = new ViewObject();
@@ -108,9 +109,10 @@ public class NewsController {
                     CommentVOs.add(viewObject);
                 }
                 model.addAttribute("comments",CommentVOs);
+                model.addAttribute("pageInfo",commentService.getComments(newsId , EntityType.ENTITY_NEW ,currentPage));
             }
+            //加载咨询的相关信息
             User owner = userService.getUser(outNews.getUserId());
-
             model.addAttribute("news",outNews);
             model.addAttribute("owner",owner);
         }catch (Exception e)

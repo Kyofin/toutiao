@@ -1,5 +1,7 @@
 package com.nowcoder.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nowcoder.dao.CommentDao;
 import com.nowcoder.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,23 @@ public class CommentService {
     @Autowired
     CommentDao commentDao;
 
-    public List<Comment >getComment(int entityId , int entityType)
+    public PageInfo<Comment> getComments(int entityId , int entityType , Integer currentPage)
     {
-       return   commentDao.selectByEntity(entityId,entityType);
+        List <Comment> commentLsit = null;
+        int pageSize = 5;
+
+        if (currentPage == null)
+        {
+            PageHelper.startPage(1,pageSize);
+            commentLsit =commentDao.selectByEntity(entityId,entityType);
+        }else
+        {
+            PageHelper.startPage(currentPage,pageSize);
+            commentLsit =commentDao.selectByEntity(entityId,entityType);
+        }
+        //包装内容
+        PageInfo<Comment> pageInfo = new PageInfo<>(commentLsit);
+        return  pageInfo;
     }
 
     public void addComment(Comment comment)
