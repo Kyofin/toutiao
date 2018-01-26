@@ -1,14 +1,11 @@
 package com.nowcoder;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.nowcoder.dao.LoginTicketDAO;
 import com.nowcoder.dao.MessageDao;
 import com.nowcoder.dao.NewsDAO;
 import com.nowcoder.dao.UserDAO;
 import com.nowcoder.model.Message;
-import com.nowcoder.model.News;
 import com.nowcoder.model.User;
 import com.nowcoder.service.NewsService;
 import com.nowcoder.util.ToutiaoUtil;
@@ -48,8 +45,7 @@ public class Tests {
 	@Test
 	public void  pageHelper()
 	{
-		Integer page = null;
-		System.out.println(JSONObject.toJSONString(newsService.getNewsByPage(0,2).getNavigateLastPage()));
+		System.out.println(newsService.getNewsByIdAndPage(1,null).getList());
 	}
 
 

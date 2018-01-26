@@ -33,7 +33,7 @@ public class NewsService {
 
 
 
-        public PageInfo<News> getNewsByPage(int userId , Integer currentPage )
+        public PageInfo<News> getNewsByIdAndPage(int userId , Integer currentPage )
         {
                 int pageSize = 10 ;
                 List <News> newsList = null;

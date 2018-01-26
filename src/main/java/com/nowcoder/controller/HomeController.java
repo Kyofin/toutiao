@@ -44,7 +44,7 @@ public class HomeController {
         List<ViewObject> viewObjectList = getNewsViewObj(0, page);
         model.addAttribute("vos", viewObjectList);
         model.addAttribute("title", "头条资讯");
-        model.addAttribute("pageInfo",newsService.getNewsByPage(0, page));
+        model.addAttribute("pageInfo",newsService.getNewsByIdAndPage(0, page));
         return "home";
     }
 
@@ -58,10 +58,10 @@ public class HomeController {
      */
     @RequestMapping(path = {"/user/{userId}"})
     public String userIndex(Model model, @PathVariable("userId") int userId, @RequestParam(required = false) Integer page) {
-        List<ViewObject> viewObjectList = getNewsViewObj(userId, 0);
+        List<ViewObject> viewObjectList = getNewsViewObj(userId, page);
         model.addAttribute("vos", viewObjectList);
         model.addAttribute("title", "我的资讯");
-        model.addAttribute("pageInfo",newsService.getNewsByPage(userId, page));
+        model.addAttribute("pageInfo",newsService.getNewsByIdAndPage(userId, page));
 
         return "home";
     }
@@ -69,7 +69,7 @@ public class HomeController {
 
     public List<ViewObject> getNewsViewObj(int userId, Integer currentPage) {
         //获取咨询
-        List<News> newsList = newsService.getNewsByPage(userId, currentPage).getList();
+        List<News> newsList = newsService.getNewsByIdAndPage(userId, currentPage).getList();
         //viewobj的集合
         List<ViewObject> viewObjectList = new ArrayList<>();
         //将要展示的内容打包成一个对象放入集合中

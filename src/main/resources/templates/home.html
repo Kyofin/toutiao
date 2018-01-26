@@ -144,7 +144,12 @@
         <nav style="text-align: center">
 
             <ul   class="pagination">
-                <li class="previous"><a href="?page=1">首页</a></li>
+                #if($pageInfo.pages!=0)
+                    <li class="previous"><a href="?page=1">首页</a></li>
+                #else
+                    赶紧发布咨询吧！你发布了0条咨询！
+                #end
+
 
                 #if($pageInfo.navigateFirstPage != $pageInfo.pageNum)
                      <li><a href="?page=$!{pageInfo.prePage}">&laquo;上一页</a></li>
@@ -161,7 +166,9 @@
                     <li><a href="?page=$!{pageInfo.nextPage}">&raquo;下一页</a></li>
                 #end
 
-                <li class="previous"><a href="?page=$!{pageInfo.pages}">尾页</a></li>
+                #if($pageInfo.pages!=0)
+                    <li class="previous"><a href="?page=$!{pageInfo.pages}">尾页</a></li>
+                #end
             </ul>
 
 
