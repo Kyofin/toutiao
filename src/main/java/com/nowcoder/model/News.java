@@ -23,6 +23,17 @@ public class News {
 
   private int userId;
 
+  private  String content ;
+
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
   public int getId() {
     return id;
   }

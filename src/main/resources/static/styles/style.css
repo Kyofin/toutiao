@@ -7169,3 +7169,18 @@ textarea[readonly] {
     margin-left: 0;
 }
 /* popup-wrap end */
+
+/*! CSS Used from: https://www.v2ex.com/static/css/style.css?v=b1e1bfc1d2b3468c61b32a269916f0e4 */
+h3{font-size:16px;font-weight:500;line-height:100%;margin:15px 0px 15px 0px;padding:0px;}
+hr{border:none;height:1px;color:#e2e2e2;background-color:#e2e2e2;margin-bottom:1em;}
+.topic_content>*:first-child{margin-top:0!important;}
+.topic_content>*:last-child{margin-bottom:0!important;}
+::-webkit-input-placeholder{color:#c0c0c0;}
+:-moz-placeholder{color:#c0c0c0;}
+::-moz-placeholder{color:#c0c0c0;}
+:-ms-input-placeholder{color:#c0c0c0;}
+.markdown_body>*:first-child{margin-top:0!important;}
+.markdown_body>*:last-child{margin-bottom:0!important;}
+.markdown_body img{max-width:100%;}
+/*! CSS Used from: https://www.v2ex.com/css/desktop.css?v=3.9.8.0 */
+.topic_content img{max-width:100%!important;}

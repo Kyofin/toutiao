@@ -10,7 +10,7 @@ import java.util.List;
 public interface NewsDAO {
 
         String TABLE_NAME = "news";
-        String INSERT_FIELDS = "title , link , image  , like_count,comment_count,created_date,user_id";
+        String INSERT_FIELDS = "title , link , image  , like_count,comment_count,created_date,user_id ,content";
         String SELECT_FIELDS =" id , "+ INSERT_FIELDS;
 
         @Insert({"insert into ",TABLE_NAME," (",INSERT_FIELDS,

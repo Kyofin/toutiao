@@ -42,6 +42,11 @@
             <div class="subject-name">来自 <a href="/user/$!{owner.id}">$!{owner.name}</a></div>
         </div>
 
+        <div class="content" style="margin-top: 10px;margin-bottom: 10px">
+            $!{news.content}
+        </div>
+
+        <hr>
 
         <div class="post-comment-form">
             #if($user)
@@ -86,7 +91,9 @@
             <nav style="text-align: center">
 
                 <ul   class="pagination">
+                    #if($pageInfo.pages!=0)
                     <li class="previous"><a href="?page=1">首页</a></li>
+                    #end
 
                     #if($pageInfo.navigateFirstPage != $pageInfo.pageNum)
                     <li><a href="?page=$!{pageInfo.prePage}">&laquo;上一页</a></li>
@@ -103,7 +110,12 @@
                     <li><a href="?page=$!{pageInfo.nextPage}">&raquo;下一页</a></li>
                     #end
 
+
+
+                    #if($pageInfo.pages!=0)
                     <li class="previous"><a href="?page=$!{pageInfo.pages}">尾页</a></li>
+                    #end
+
                 </ul>
 
 
