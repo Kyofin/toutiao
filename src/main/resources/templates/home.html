@@ -58,9 +58,15 @@
         </div>
         -->
 
+
         <div class="container" id="daily">
             <div class="jscroll-inner">
                 <div class="daily">
+
+                    #if($title=='我的资讯')
+                    <h2>我的资讯</h2>
+                    <hr>
+                    #end
 
                     #set($cur_date = '')
                     #foreach($vo in $vos)
@@ -71,7 +77,7 @@
                         #set($cur_date = $date.format('yyyy-MM-dd', $vo.news.createdDate))
                     <h3 class="date">
                         <i class="fa icon-calendar"></i>
-                        <span>头条资讯 &nbsp; $date.format('yyyy-MM-dd', $vo.news.createdDate)</span>
+                        <span>$date.format('yyyy-MM-dd', $vo.news.createdDate)的&nbsp;资讯  </span>
                     </h3>
 
                     <div class="posts">
