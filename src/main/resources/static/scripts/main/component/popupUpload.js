@@ -21,6 +21,7 @@ var oPopupUpload = new PopupUpload({
                     '</div>',
                 '</div>',
                   '<div class="form-group"><label class="col-sm-2 control-label">标题</label><div class="col-sm-10"><input class="js-title form-control" type="text"></div></div>',
+                  '<div class="form-group"><label class="col-sm-2 control-label">内容</label><div class="col-sm-10"><textarea class="js-content form-control" ></textarea></div></div>',
                   '<div class="form-group"><label class="col-sm-2 control-label">链接</label><div class="col-sm-10"><input class="js-link form-control" type="text"></div></div>',
                   '<div class="form-group">',
                         '<div class="col-lg-10 col-lg-offset-2">',
@@ -59,12 +60,13 @@ var oPopupUpload = new PopupUpload({
                 var that = this;
                 var oEl = that.getEl();
                 var sTitle = $.trim(oEl.find('input.js-title').val());
+                var sContent = $.trim(oEl.find('textarea.js-content').val());
                 var sLink = $.trim(oEl.find('input.js-link').val());
                 if (!sTitle) {
                     return alert('标题不能为空');
                 }
-                if (!sLink) {
-                    return alert('链接不能为空');
+                if (!sContent) {
+                    return alert('内容不能为空');
                 }
                 if (!that.image) {
                     return alert('图片不能为空');
@@ -76,7 +78,7 @@ var oPopupUpload = new PopupUpload({
                 $.ajax({
                     url: '/user/addNews/',
                     method: 'post',
-                    data: {image: that.image, title: sTitle, link: sLink},
+                    data: {image: that.image, title: sTitle, link: sLink ,content : sContent},
                     dataType: 'json'
                 }).done(function (oResult) {
                     that.emit('done');

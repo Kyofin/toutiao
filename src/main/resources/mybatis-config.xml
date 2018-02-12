@@ -17,7 +17,7 @@
         <setting name="useGeneratedKeys" value="true"/>
 
         <!--打印sql-->
-        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!--<setting name="logImpl" value="STDOUT_LOGGING" />-->
 
     </settings>
 

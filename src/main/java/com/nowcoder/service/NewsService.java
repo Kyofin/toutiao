@@ -103,12 +103,13 @@ public class NewsService {
          * @param title
          * @param link
          */
-        public void addNews(String image, String title, String link) {
+        public void addNews(String image, String title, String link ,String content) {
                 News insertNews = new News();
                 insertNews.setCreatedDate(new Date());
                 insertNews.setLink(link);
                 insertNews.setImage(image);
                 insertNews.setTitle(title);
+                insertNews.setContent(content);
                 if (hostHolder.getUser() == null)
                 {
                         insertNews.setUserId(3);  //id= 3 为匿名用户

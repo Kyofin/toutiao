@@ -128,6 +128,7 @@ public class MessageController {
             model.addAttribute("conversations",messageVOs);
         }catch (Exception e )
         {
+            e.printStackTrace();
             LOGGER.error("展示站内信列表失败" +e.getMessage());
         }
         return "letter";

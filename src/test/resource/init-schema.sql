@@ -60,8 +60,11 @@ CREATE TABLE `news` (
   `comment_count` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_romanian_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115067 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=115646 DEFAULT CHARSET=utf8;
+
+
 
 -- ----------------------------
 -- Table structure for user

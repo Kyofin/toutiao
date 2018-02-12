@@ -65,15 +65,17 @@ public class NewsController {
     @ResponseBody
     public String addNews(@RequestParam("image") String image,
                           @RequestParam("title") String title,
+                          @RequestParam("content") String content,
                           @RequestParam("link") String link)
     {
         try {
 
-            newsService.addNews(image,title,link);
+            newsService.addNews(image,title,link,content);
             return ToutiaoUtil.getJSONString(0,"添加咨询成功");
         }catch (Exception e)
         {
             LOGGER.error("添加咨询失败");
+            e.printStackTrace();
             return  ToutiaoUtil.getJSONString(1,"添加咨询失败");
         }
 
