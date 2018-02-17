@@ -133,7 +133,8 @@ public class NewsController {
             Comment comment = new Comment();
             comment.setEntityType(EntityType.ENTITY_NEW);
             //过滤html的标签
-            comment.setContent(HtmlUtils.htmlEscape(content));
+            //comment.setContent(HtmlUtils.htmlEscape(content));
+            comment.setContent(content);
             comment.setStatus(0);   //默认为0正常
             comment.setUserId(hostHolder.getUser().getId());
             comment.setCreatedDate(new Date());
