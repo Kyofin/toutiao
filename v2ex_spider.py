@@ -19,12 +19,12 @@ class Handler(BaseHandler):
         self.db = MySQLdb.connect('127.0.0.1', 'root', '123456', 'toutiao', charset='utf8');
 
     # 添加咨询到数据库
-    def addQuestion(self, title, link, image, comment_count):
+    def addQuestion(self, title, link, image, comment_count ,content):
         user_id = random.randint(1, 10)
         try:
             cursor = self.db.cursor()
-            sql = 'insert into news(title, link ,image, like_count,comment_count,created_date,user_id) values ("%s","%s","%s",0, %d,now(),%d)' % (
-            title, link, image, comment_count, user_id);
+            sql = 'insert into news(title, link ,image, like_count,comment_count,created_date,user_id,content) values ("%s","%s","%s",0, %d,now(),%d,"%s")' % (
+            title, link, image, comment_count, user_id ,content);
             cursor.execute(sql)
             self.db.commit()
             return int(cursor.lastrowid)
@@ -98,13 +98,20 @@ class Handler(BaseHandler):
 
         print os.getcwd()
 
+		
+        question_content_html = response.doc('div.topic_content').html()
+        if question_content_html == None:
+            question_content_html = ''
+        question_content = question_content_html.replace('"', '\\"')
+        print question_content
+		
         link = response.url
         title = response.doc('h1').text()
         img = response.doc('div.fr img').attr('src')
-        news_id= self.addQuestion(title, link, img, int(comments_count))
+        news_id= self.addQuestion(title, link, img, int(comments_count),question_content)
         for item in list:
             self.addComments(item.replace('"', '\\"'), news_id)
-
+		
         return {
             "url": link,
             "title": title,
