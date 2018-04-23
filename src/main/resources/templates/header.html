@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>One place </title>
+    <title>$!{title} </title>
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="keywords" content="读《Web 全栈工程师的自我修养》">
@@ -54,16 +54,18 @@
                 #end
             </ul>
 
-            <form class=" navbar-form navbar-right">
+            <form class=" navbar-form navbar-right"  onkeydown="if(event.keyCode==13){return false;}">
                 <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="搜索"/>
+                    <input type="text" id="query"  class="form-control" placeholder="搜索"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-success" type="button">Go!</button>
+                        <button class="btn btn-success" id="searchButton" type="button">Go!</button>
 
                     </span>
                 </div>
+                <button class="btn btn-primary" id="initButton" type="button">重建索引</button>
 
             </form>
+
 
         </nav>
     </div>

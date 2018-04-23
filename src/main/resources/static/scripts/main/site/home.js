@@ -3,6 +3,25 @@
     var PopupUpload = Base.getClass('main.component.PopupUpload');
     var ActionUtil = Base.getClass('main.util.Action');
 
+
+    $("#searchButton").click(function(){
+        var url ="/search?query="+$("#query").val()+"&page=1&size=10";
+        window.location.href= url;
+    });
+
+    $("#initButton").click(function(){
+        var r=confirm("确认重建索引吗？")
+        if (r==true)
+        {
+            $.post("/init",function (res) {
+                var resobj = JSON.parse(res);
+                alert(resobj.msg)
+            })
+        }
+
+
+    });
+
     Base.ready({
         initialize: fInitialize,
         binds: {
@@ -15,6 +34,8 @@
             'click button.click-dislike': fClickDisLike
         }
     });
+
+
 
     function fInitialize() {
         if (window.loginpop > 0) {

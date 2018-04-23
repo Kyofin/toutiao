@@ -123,9 +123,14 @@ public class NewsService {
                return   newsDao.selectById(newsId);
         }
 
-    public void updateCommentCount(int newsId, int count) {
+        public void updateCommentCount(int newsId, int count) {
                 newsDao.updateCommentCount(newsId,count);
     }
+
+        public List<News> getAllNews(){
+                List<News> newsList = newsDao.selectAllNews();
+                return newsList;
+        }
 
         public void updateLikeCount(int newsId, int likeCount) {
                 newsDao.updateLikeCount(newsId,likeCount);

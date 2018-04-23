@@ -1,0 +1,81 @@
+#parse("header.html")
+
+    <div id="main">
+
+
+        <div class="container" id="daily">
+
+
+                    #foreach($news in $pageInfo.list)
+
+
+                            <div class="content">
+
+                                <div class="content-main">
+                                    <h3 class="title">
+                                        <a target="_blank" rel="external nofollow" href="/news/$!{news.id}">$!{news.title}</a>
+                                    </h3>
+                                    <div class="content">
+                                        $!{news.content}
+
+                                    </div>
+                                </div>
+                            </div>
+<hr>
+
+
+
+
+
+                    #end
+
+
+
+        <!-- 分页 -->
+        <nav style="text-align: center">
+
+            <ul   class="pagination">
+                #if($pageInfo.pages!=0)
+                    <li class="previous"><a href="?page=1">首页</a></li>
+                #else
+                    赶紧发布咨询吧！你发布了0条咨询！
+                #end
+
+
+                #if($pageInfo.navigateFirstPage != $pageInfo.pageNum)
+                     <li><a href="?page=$!{pageInfo.prePage}">&laquo;上一页</a></li>
+                #end
+
+                #foreach($item in $pageInfo.navigatepageNums)
+                    #if($item == $pageInfo.pageNum)
+                        <li class="disabled"><a href="#">$!{pageInfo.pageNum}</a></li>
+                    #else
+                        <li ><a href="?page=${item}">$item </a></li>
+                    #end
+                #end
+                #if($pageInfo.pages != $pageInfo.pageNum)
+                    <li><a href="?page=$!{pageInfo.nextPage}">&raquo;下一页</a></li>
+                #end
+
+                #if($pageInfo.pages!=0)
+                    <li class="previous"><a href="?page=$!{pageInfo.pages}">尾页</a></li>
+                #end
+            </ul>
+
+
+
+        </nav>
+
+    </div>
+
+    </div>
+
+
+#if ($pop)
+<script>
+window.loginpop = $!{pop};
+</script>
+<script type="text/javascript" src="/scripts/main/site/home.js"></script>
+#end
+
+#parse("footer.html")

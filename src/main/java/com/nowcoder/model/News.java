@@ -97,4 +97,20 @@ public class News {
   public void setUserId(int userId) {
     this.userId = userId;
   }
+
+
+  @Override
+  public String toString() {
+    return "News{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", link='" + link + '\'' +
+            ", image='" + image + '\'' +
+            ", likeCount=" + likeCount +
+            ", commentCount=" + commentCount +
+            ", createdDate=" + createdDate +
+            ", userId=" + userId +
+            ", content='" + content + '\'' +
+            '}';
+  }
 }
